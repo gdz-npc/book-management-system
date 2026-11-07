@@ -30,7 +30,10 @@ class BookController extends Controller
 
         $book = Book::create($data);
 
-        return response()->json($book, 201);
+        return response()->json([
+            'message' => 'success message',
+            'data' => $book
+        ], 201);
     }
 
     /**
@@ -39,7 +42,6 @@ class BookController extends Controller
     public function show(string $id)
     {
         $book = Book::findOrFail($id);
-
         return response()->json($book, 200);
     }
 
@@ -59,7 +61,10 @@ class BookController extends Controller
 
         $book->update($data);
 
-        return response()->json($book, 200);
+        return response()->json([
+            'message' => 'update success message',
+            'data' => $book
+        ], 200);
     }
 
     /**
